@@ -1,20 +1,21 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/login";
-import Travels from "./components/travels";
+import {  Routes, Route } from "react-router-dom";
+import Login from "./pages/login";
+import Travels from "./pages/travels";
+import Navbar from "./components/ui/navbar/navbar";
 // Importa otros componentes según necesites
 
 function App() {
   return (
-    <Router>
-      <div>
-        <h1>Mi App de Viajes</h1>
+    <>
+    <Navbar/>
+      
         <Routes>
           <Route path="/" element={<Travels />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-      </div>
-    </Router>
+      
+    </>
   );
 }
 
