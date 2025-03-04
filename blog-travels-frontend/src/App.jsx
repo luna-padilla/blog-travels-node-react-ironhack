@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./components/Login";
-import Travels from "./components/Travels";
+import Login from "./components/login";
+import Travels from "./components/travels";
 // Importa otros componentes según necesites
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Travels />} />
           <Route path="/login" element={<Login />} />
-          {/* Agrega más rutas según sea necesario */}
         </Routes>
       </div>
     </Router>
