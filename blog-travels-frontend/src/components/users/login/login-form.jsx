@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createSession } from "../../../services/api-service";
 
-function Login() {
+function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const response = await createSession({ email, password });
@@ -17,7 +17,7 @@ function Login() {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleRegister}>
       <h2>Iniciar Sesión</h2>
       <input
         type="email"
@@ -33,9 +33,9 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <button type="submit">Login</button>
+      <button type="submit">Register</button>
     </form>
   );
 }
 
-export default Login;
+export default RegisterForm;

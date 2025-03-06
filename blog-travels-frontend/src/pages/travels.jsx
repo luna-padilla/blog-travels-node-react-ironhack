@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getTravels } from "../services/api-service";
 
-function Travels() {
+function TravelsPage() {
   const [travels, setTravels] = useState([]);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ function Travels() {
   );
 }
 
-export default Travels;
+export default TravelsPage;

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { createSession } from "../../../api/api";
+import { useState } from "react";
+import { createSession } from "../../../services/api-service";
 
 function Login() {
   const [email, setEmail] = useState("");
