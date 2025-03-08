@@ -1,0 +1,1 @@
+export { default as TravelDetail } from './travel-detail/travel-detail'

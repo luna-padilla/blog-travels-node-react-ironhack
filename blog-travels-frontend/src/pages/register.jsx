@@ -1,5 +1,5 @@
 import { PageLayout } from "../components/layouts"
-import { LoginForm } from "../components/users/"
+import { RegisterForm } from "../components/users/"
 
 function RegisterPage() {
   return (
