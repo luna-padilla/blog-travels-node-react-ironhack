@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { LoginPage, RegisterPage, HomePage, TravelsDetailPage } from "./pages";
 import Navbar from "./components/ui/navbar/navbar";
-
+// comment
 function App() {
   return (
     <>
