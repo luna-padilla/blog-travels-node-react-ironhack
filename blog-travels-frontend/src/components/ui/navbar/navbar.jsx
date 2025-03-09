@@ -1,15 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import PageLayout from "../../layouts/page-layout/page-layout";
+import { useAuthContext } from "../../../contexts/auth-context";
 
 function Navbar() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Simulación de autenticación
-
-  const handleLogout = () => {
-    setIsAuthenticated(false);
-    // Aquí podrías manejar la lógica real de cierre de sesión
-  };
-
+  const { user, logout } = useAuthContext;
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <PageLayout>
@@ -30,7 +24,7 @@ function Navbar() {
 
         <div className="collapse navbar-collapse" id="main-nav">
           <ul className="navbar-nav ms-auto">
-            {isAuthenticated ? (
+            {user ? (
               <li className="nav-item dropdown">
                 <button
                   className="btn btn-secondary dropdown-toggle"
@@ -38,8 +32,7 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i className="bi bi-person-circle"></i>{" "}
-                  {/* Icono de usuario */}
+                  <i className="bi bi-person-circle"></i> {user.name} {/* Muestra el nombre del usuario si está disponible */}
                 </button>
                 <ul
                   className="dropdown-menu dropdown-menu-end"
@@ -51,7 +44,7 @@ function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <button className="dropdown-item" onClick={handleLogout}>
+                    <button className="dropdown-item" onClick={logout}>
                       Cerrar sesión
                     </button>
                   </li>

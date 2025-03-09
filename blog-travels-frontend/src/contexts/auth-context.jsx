@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { profile } from "../services/api-service";
+import { getUserProfile } from "../services/api-service";
 
 const AuthContext = createContext();
 
@@ -7,7 +7,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    profile()
+    getUserProfile()
       .then((data) => setUser(data))
       .catch(() => setUser(null));
   }, []);
