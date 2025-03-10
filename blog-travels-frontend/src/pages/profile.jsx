@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
-import {
-  getUserProfile,
-  updateUser,
-  destroySession,
-} from "../services/api-service";
+import { profile as userProfile , destroySession, updateUser } from "../services/api-service";
 
 function ProfilePage() {
-  const { user, logout } = useAuthContext;
+  const { user, logout } = useAuthContext();
   const [profile, setProfile] = useState(user);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getUserProfile()
+    userProfile()
       .then((res) => {
-        setProfile(res.data);
+        setProfile(res);
         setLoading(false);
       })
       .catch(() => {

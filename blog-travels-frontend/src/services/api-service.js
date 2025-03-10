@@ -1,28 +1,45 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api/v1/";
-
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  withCredentials: true, // Si usas sesiones y cookies
+const http = axios.create({
+  baseURL: import.meta.env.VITE_BASE_API_URL || "http://localhost:3000/api/v1",
+  withCredentials: true,
 });
 
-// Users
-export const createUser = (data) => api.post("/users", data);
-export const updateUser = (data) => api.patch("/users/me", data);
-export const getUserProfile = () => api.get("/users/me");
-export const validateUser = (id) => api.get(`/users/${id}/validate`);
+http.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
-// Sessions
-export const createSession = (data) => api.post("/sessions", data);
-export const destroySession = () => api.delete("/sessions");
+// Users
+
+const profile = () => http.get("/users/me");
+
+const register = (user) => http.post("/users", user);
+
+const login = (user) => http.post("/sessions", user);
+
+const destroySession = () => http.delete("/sessions");
+
+const updateUser = (data) => http.patch("/users/me", data);
 
 // Travels
-export const getTravels = () => api.get("/travels");
-export const getTravelById = (id) => api.get(`/travels/${id}`);
-export const addTravel = (data) => api.post("/travels", data);
+const getTravels = () => http.get("/travels");
+const getTravelById = (id) => http.get(`/travels/${id}`);
+const addTravel = (data) => http.post("/travels", data);
 
 // Comments
-export const getComments = () => api.get("/comments");
+const getComments = () => http.get("/comments");
 
-export default api;
+export {
+  profile,
+  register,
+  login,
+  destroySession,
+  getTravels,
+  getTravelById,
+  addTravel,
+  getComments,
+  updateUser,
+};

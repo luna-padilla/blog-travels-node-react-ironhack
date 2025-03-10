@@ -1,6 +1,8 @@
 require("dotenv").config();
 const { cors } = require("./config/cors.config");
 const logger = require("morgan");
+const { loadSession } = require("./config/session.config");
+const { loadSessionUser } = require("./middlewares/session.middleware");
 const express = require("express");
 const app = express();
 const routes = require("./config/routes.config");
@@ -12,6 +14,9 @@ app.use(cors);
 app.use(express.json());
 //lee del obj req para registrar información sobre cada peticiòn HTTP y generar el log
 app.use(logger("dev"));
+app.use(loadSession);
+app.use(loadSessionUser);
+
 // API Routes Configuration
 app.use("/api/v1/", routes);
 app.get("/prueba", (req, res) => {

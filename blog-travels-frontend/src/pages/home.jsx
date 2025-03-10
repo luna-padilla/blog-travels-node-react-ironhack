@@ -8,8 +8,7 @@ function HomePage() {
     const fetchTravels = async () => {
       try {
         const response = await getTravels();
-        setTravels(response.data);
-        console.log(response.data);
+        setTravels(response);
       } catch (error) {
         console.error("Error al obtener los viajes:", error.response?.data || error.message);
       }

@@ -1,41 +1,110 @@
-import { useState } from "react";
-import { createSession } from "../../../services/api-service";
+import { useForm } from "react-hook-form";
+import * as Api from "../../../services/api-service";
+import { useAuthContext } from "../../../contexts/auth-context";
+import { useNavigate } from "react-router-dom";
+function RegisterForm() {
+  const { register, handleSubmit, formState, setError } = useForm();
+  const { login } = useAuthContext();
+  const navigate = useNavigate();
+  const errors = formState.errors;
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const handleRegister = async (user) => {
+    const formData = new FormData();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+    formData.append("name", user.name);
+    formData.append("email", user.email);
+    formData.append("password", user.password);
+    formData.append("avatar", user.avatar[0]);
+
     try {
-      const response = await createSession({ email, password });
-      console.log("Inicio de sesión exitoso:", response.data);
-      // Aquí puedes guardar la información del usuario en el estado global o en el contexto
+      await Api.register(formData);
+      const data = await Api.login(user);
+
+      login(data);
+
+      navigate("/");
     } catch (error) {
-      console.error("Error al iniciar sesión:", error.response?.data || error.message);
+      console.log(error);
+      const { data } = error.response;
+
+      Object.keys(data.errors).forEach((inputName) =>
+        setError(inputName, { message: data.errors[inputName] })
+      );
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Iniciar Sesión</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div>
+      <h2>Register</h2>
+
+      <form onSubmit={handleSubmit(handleRegister)}>
+        <div className="input-group mb-1">
+          <span className="input-group-text">
+            <i className="fa fa-user fa-fw"></i>
+          </span>
+          <input
+            type="text"
+            className={`form-control ${errors.name ? "is-invalid" : ""}`}
+            placeholder="John Doe"
+            {...register("name", { required: "Mandatory field" })}
+          />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email.message}</div>
+          )}
+        </div>
+
+        <div className="input-group mb-1">
+          <span className="input-group-text">
+            <i className="fa fa-user fa-fw"></i>
+          </span>
+          <input
+            type="email"
+            className={`form-control ${errors.email ? "is-invalid" : ""}`}
+            placeholder="user@example.org"
+            {...register("email", { required: "Mandatory field" })}
+          />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email.message}</div>
+          )}
+        </div>
+
+        <div className="input-group mb-2">
+          <span className="input-group-text">
+            <i className="fa fa-lock fa-fw"></i>
+          </span>
+          <input
+            type="password"
+            className={`form-control ${errors.password ? "is-invalid" : ""} `}
+            placeholder="****"
+            {...register("password", { required: "Mandatory field" })}
+          />
+          {errors.password && (
+            <div className="invalid-feedback">{errors.password.message}</div>
+          )}
+        </div>
+
+        <div className="input-group mb-2">
+          <span className="input-group-text">
+            <i className="fa fa-lock fa-fw"></i>
+          </span>
+          <input
+            type="file"
+            className={`form-control ${errors.avatar ? "is-invalid" : ""} `}
+            {...register("avatar")}
+          />
+          {errors.avatar && (
+            <div className="invalid-feedback">{errors.avatar.message}</div>
+          )}
+        </div>
+
+        <div className="d-grid">
+          <button className="btn btn-primary" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
-export default Login;
+export default RegisterForm;
