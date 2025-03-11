@@ -1,73 +1,62 @@
+import './footer.css';
+
 function Footer({ className = "" }) {
   return (
-    <footer className={`footer bg-white py-4 ${className}`}>
+    <footer className={`my-footer py-4 ${className}`}>
       <div className="container">
         <div className="row justify-content-center">
-        
           <div className="col-md-4 text-center">
-            <h5 className="text-danger fw-bold">Contact</h5>
-            <p className="mb-1">Address: Calle del Libro, 42, 28013 Madrid</p>
-            <p className="mb-1">Phone: +34 987 654 321</p>
-            <p>
+            <h5 className="text-light fw-bold">Contact Us</h5>
+            <p className="mb-1">
               Email:{" "}
               <a
-                href="mailto:contact@ironbookshop.com"
-                className="text-danger text-decoration-none"
+                href="mailto:contact@travelblog.com"
+                className="text-light text-decoration-none"
               >
-                contact@ironbookshop.com
+                contact@travelblog.com
               </a>
             </p>
+            <p className="mb-1">Phone: +1 555-123-4567</p>
+            <p>Address: 123 Travel Street, Global City</p>
           </div>
 
           <div className="col-md-4 text-center">
-            <h5 className="text-danger fw-bold">Links</h5>
+            <h5 className="text-light fw-bold">Explore</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="/about" className="text-muted text-decoration-none">
+                <a href="/about" className="text-light text-decoration-none">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-muted text-decoration-none">
-                  Contact
+                <a href="/categories" className="text-light text-decoration-none">
+                  Travel Categories
                 </a>
               </li>
               <li>
-                <a
-                  href="/terms-conditions"
-                  className="text-muted text-decoration-none"
-                >
-                  Terms & Conditions
+                <a href="/community" className="text-light text-decoration-none">
+                  Community Guidelines
                 </a>
               </li>
             </ul>
           </div>
 
           <div className="col-md-4 text-center">
-            <h5 className="text-danger fw-bold">Legal Information</h5>
+            <h5 className="text-light fw-bold">Legal</h5>
             <ul className="list-unstyled">
               <li>
-                <a
-                  href="/legal-notice"
-                  className="text-muted text-decoration-none"
-                >
-                  Legal Notice
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/shipping-information"
-                  className="text-muted text-decoration-none"
-                >
-                  Shipping Information
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/privacy-policy"
-                  className="text-muted text-decoration-none"
-                >
+                <a href="/privacy" className="text-light text-decoration-none">
                   Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="/terms" className="text-light text-decoration-none">
+                  Terms of Service
+                </a>
+              </li>
+              <li>
+                <a href="/cookies" className="text-light text-decoration-none">
+                  Cookie Policy
                 </a>
               </li>
             </ul>
@@ -75,8 +64,8 @@ function Footer({ className = "" }) {
         </div>
 
         <div className="text-center mt-3">
-          <p className="text-muted">
-            &copy; {new Date().getFullYear()} Iron Bookshop. All rights reserved.
+          <p className="text-light">
+            &copy; {new Date().getFullYear()} Travel Blog. All rights reserved.
           </p>
         </div>
       </div>

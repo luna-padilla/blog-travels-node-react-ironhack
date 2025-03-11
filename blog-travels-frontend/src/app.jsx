@@ -4,6 +4,7 @@ import { LoginPage, RegisterPage, HomePage, TravelsDetailPage } from "./pages";
 import Navbar from "./components/ui/navbar/navbar";
 import ProfilePage from "./pages/profile";
 import PrivateRoute from "./components/guards/private-route";
+import Footer from "./components/ui/footer/footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/travels/:id" element={<TravelsDetailPage />} />
       </Routes>
+      <Footer/>
     </>
   );
 }

@@ -21,11 +21,10 @@ function TravelList({ category }) {
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>{error}</p>;
-
   return (
     <div className="row">
       {travels.map((travel) => (
-        <div key={travel.id} className="col-md-4">
+        <div key={travel.id} className="col-md-12">
           <TravelItem travel={travel} />
         </div>
       ))}
