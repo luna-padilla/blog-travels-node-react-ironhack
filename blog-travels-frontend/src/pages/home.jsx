@@ -1,35 +1,45 @@
-import React, { useState, useEffect } from "react";
-import { getTravels } from "../services/api-service";
+import { useState } from "react";
+import TravelList from "../components/travel/travel-list/travel-list";
 
 function HomePage() {
-  const [travels, setTravels] = useState([]);
-
-  useEffect(() => {
-    const fetchTravels = async () => {
-      try {
-        const response = await getTravels();
-        setTravels(response);
-      } catch (error) {
-        console.error("Error al obtener los viajes:", error.response?.data || error.message);
-      }
-    };
-    fetchTravels();
-  }, []);
+  const [activeTab, setActiveTab] = useState("featured");
 
   return (
-    <div>
-      <h2>Lista de Viajes</h2>
-      {travels.length === 0 ? (
-        <p>No hay viajes disponibles.</p>
-      ) : (
-        <ul>
-          {travels.map((travel) => (
-            <li key={travel._id}>
-              {travel.title} - {travel.subtitle}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="container mt-4">
+      {/* Pestañas */}
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "featured" ? "active" : ""}`}
+            onClick={() => setActiveTab("featured")}
+          >
+            Featured travel blogs
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "newest" ? "active" : ""}`}
+            onClick={() => setActiveTab("newest")}
+          >
+            Newest travel blogs
+          </button>
+        </li>
+        <li className="nav-item">
+          <button
+            className={`nav-link ${activeTab === "bloggers" ? "active" : ""}`}
+            onClick={() => setActiveTab("bloggers")}
+          >
+            Bloggers of the week
+          </button>
+        </li>
+      </ul>
+
+      {/* Contenido de las pestañas */}
+      <div className="tab-content mt-3 p-3 border rounded custom-tab-content">
+        {activeTab === "featured" && <TravelList category="featured" />}
+        {activeTab === "newest" && <TravelList category="newest" />}
+        {activeTab === "bloggers" && <TravelList category="bloggers" />}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,55 @@
+/* Colores seleccionados */
+:root {
+  --primary-color: #06257bdc;
+  /* Azul */
+  --secondary-color: #918361;
+  /* Gris oscuro */
+  --white: #fff;
+}
+
+/* Estilos para las pestañas */
+.custom-tabs .nav-link {
+  color: var(--secondary-color);
+  background: var(--white);
+  border: 1px solid var(--secondary-color);
+  margin-right: 5px;
+  border-radius: 8px 8px 0 0;
+  padding: 10px 15px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.custom-tabs .nav-link:hover {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+.custom-tabs .nav-link.active {
+  background: var(--primary-color);
+  color: var(--white);
+  font-weight: bold;
+  border-color: var(--primary-color);
+}
+
+/* Contenedor de contenido */
+.custom-tab-content {
+  background: var(--white);
+  color: var(--secondary-color);
+  min-height: 120px;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--secondary-color);
+}
+
+
+.nav-tabs .nav-link {
+  color: #918361;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.custom-tab-content {
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
