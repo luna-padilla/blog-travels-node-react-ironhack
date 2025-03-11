@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route
-          path="/create-event"
+          path="/profile"
           element={
             <PrivateRoute role="admin">
               <ProfilePage />
