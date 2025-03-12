@@ -32,9 +32,9 @@ function Navbar() {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to="/create-event"
+                  to="/travel"
                 >
-                  Create Event
+                  Create Travel
                 </Link>
               </li>
             )}
@@ -75,7 +75,7 @@ function Navbar() {
                         <Link
                           className="nav-link"
                           aria-current="page"
-                          to="/profile"
+                          to="/my-travels"
                         >
                           My travels
                         </Link>

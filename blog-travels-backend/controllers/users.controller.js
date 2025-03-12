@@ -70,3 +70,17 @@ module.exports.validate = (req, res, next) => {
 module.exports.profile = (req, res, next) => {
   res.json(req.user);
 };
+
+module.exports.getUserTravels = (req, res, next) => {
+  const { id } = req.params;
+
+  User.findById(id)
+    .populate("travels") // Trae los viajes del usuario con los datos completos
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res.json(user.travels);
+    })
+    .catch(next);
+};

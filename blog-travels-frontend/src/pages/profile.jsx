@@ -125,7 +125,6 @@ function ProfilePage() {
     email: user?.email || '',
     password: '',
   });
-
   if (!user) {
     return <p>Loading profile...</p>;
   }

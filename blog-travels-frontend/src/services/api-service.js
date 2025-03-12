@@ -23,8 +23,11 @@ const updateUser = (data) => http.patch("/users/me", data);
 const getTravels = () => http.get("/travels");
 const getTravelById = (id) => http.get(`/travels/${id}`);
 const addTravel = (data) => http.post("/travels", data);
+const updateTravel = (id, data) => http.put(`/travels/${id}`, data);
+const deleteTravel = (id) => http.delete(`/travels/${id}`);
 const getTravelsByCategory = (category) =>
   http.get("/travels", { params: { category } });
+const getUserTravels = (userId) => http.get(`/users/${userId}/travels`);
 
 // Comments
 const getComments = () => http.get("/comments");
@@ -37,7 +40,10 @@ export {
   getTravels,
   getTravelById,
   addTravel,
+  updateTravel,
+  deleteTravel,
   getComments,
   updateUser,
   getTravelsByCategory,
+  getUserTravels,
 };
