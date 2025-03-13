@@ -10,7 +10,9 @@ export default function MyTravels() {
   useEffect(() => {
     if (user) {
       getUserTravels(user.id)
-        .then((data) => setTravels(data))
+        .then((data) => {
+          setTravels(data);
+        })
         .catch((error) => console.error("Error fetching user travels", error));
     }
   }, [user]); // Se ejecuta cuando `user` cambia
@@ -31,13 +33,22 @@ export default function MyTravels() {
       </Link>
       <div className="list-group">
         {travels.map((travel) => (
-          <div key={travel.id} className="list-group-item d-flex justify-content-between align-items-center">
+          <div
+            key={travel.id}
+            className="list-group-item d-flex justify-content-between align-items-center"
+          >
             <span>{travel.title}</span>
             <div>
-              <Link to={`/travels/edit/${travel.id}`} className="btn btn-warning btn-sm me-2">
+              <Link
+                to={`/travels/edit/${travel.id}`}
+                className="btn btn-warning btn-sm me-2"
+              >
                 Edit
               </Link>
-              <button onClick={() => handleDelete(travel.id)} className="btn btn-danger btn-sm">
+              <button
+                onClick={() => handleDelete(travel.id)}
+                className="btn btn-danger btn-sm"
+              >
                 Delete
               </button>
             </div>

@@ -1,7 +1,9 @@
 const Comment = require("../models/comment.model");
+const User = require("../models/user.model");
+const Travel = require("../models/travel.model");
 
 // Obtener todos los comentarios
-module.exports.getComments = async (req, res) => {
+module.exports.getComments = async (req, res, next) => {
   try {
     const comments = await Comment.find({})
       .populate("travel")
@@ -10,12 +12,12 @@ module.exports.getComments = async (req, res) => {
       .populate("replies");
     res.status(200).json(comments);
   } catch (error) {
-    res.status(500).json({ message: "Error retrieving comments", error });
+    next(error);
   }
 };
 
 // Obtener un comentario por ID
-module.exports.getCommentById = async (req, res) => {
+module.exports.getCommentById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const comment = await Comment.findById(id)
@@ -28,67 +30,80 @@ module.exports.getCommentById = async (req, res) => {
     }
     res.status(200).json(comment);
   } catch (error) {
-    res.status(500).json({ message: "Error retrieving comment", error });
+    next(error);
   }
 };
 
 // Crear un nuevo comentario
-module.exports.addComment = async (req, res) => {
+module.exports.addComment = async (req, res, next) => {
   try {
-    const { comment, likes, dislikes, replies, travel } = req.body;
-    const newComment = await Comment.create({ comment, likes, dislikes, replies, travel });
+    const { comment, travel } = req.body;
+    const userId = req.user._id;
+    
+    const newComment = await Comment.create({
+      comment,
+      travel,
+      createdBy: userId,
+    });
+
+    await User.findByIdAndUpdate(userId, { $push: { comments: newComment._id } });
+    await Travel.findByIdAndUpdate(travel, { $push: { comments: newComment._id } });
+    
     res.status(201).json(newComment);
   } catch (error) {
-    res.status(500).json({ message: "Error creating comment", error });
+    next(error);
   }
 };
 
 // Actualización completa de un comentario (PUT)
-module.exports.putComment = async (req, res) => {
+module.exports.putComment = async (req, res, next) => {
   try {
     const { id } = req.params;
-    // Se espera que el body contenga todos los campos (reemplazo completo)
     const updatedComment = await Comment.findByIdAndUpdate(id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
     if (!updatedComment) {
       return res.status(404).json({ message: "Comment not found" });
     }
     res.status(200).json(updatedComment);
   } catch (error) {
-    res.status(500).json({ message: "Error updating comment", error });
+    next(error);
   }
 };
 
 // Actualización parcial de un comentario (PATCH)
-module.exports.patchComment = async (req, res) => {
+module.exports.patchComment = async (req, res, next) => {
   try {
     const { id } = req.params;
-    // Solo se actualizan los campos enviados en el body
     const updatedComment = await Comment.findByIdAndUpdate(id, req.body, {
       new: true,
-      runValidators: true
+      runValidators: true,
     });
     if (!updatedComment) {
       return res.status(404).json({ message: "Comment not found" });
     }
     res.status(200).json(updatedComment);
   } catch (error) {
-    res.status(500).json({ message: "Error partially updating comment", error });
+    next(error);
   }
 };
 
 // Eliminar un comentario
-module.exports.deleteComment = async (req, res) => {
+module.exports.deleteComment = async (req, res, next) => {
   try {
     const { id } = req.params;
     const deletedComment = await Comment.findByIdAndDelete(id);
     if (!deletedComment) {
       return res.status(404).json({ message: "Comment not found" });
     }
+
+    await User.findByIdAndUpdate(deletedComment.createdBy, { $pull: { comments: id } });
+    await Travel.findByIdAndUpdate(deletedComment.travel, { $pull: { comments: id } });
+    await Comment.deleteMany({ _id: { $in: deletedComment.replies } });
+
     res.status(200).json({ message: "Comment deleted successfully", comment: deletedComment });
   } catch (error) {
-    res.status(500).json({ message: "Error deleting comment", error });
+    next(error);
   }
 };

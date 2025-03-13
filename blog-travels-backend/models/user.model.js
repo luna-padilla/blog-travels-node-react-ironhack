@@ -63,7 +63,7 @@ const userSchema = new mongoose.Schema(
       enum: ['admin', 'guest', 'user'],
       default: 'guest'
     },
-    travels: [{
+    createdTravels: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Travel'
     }]

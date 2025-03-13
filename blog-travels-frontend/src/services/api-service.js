@@ -22,6 +22,7 @@ const updateUser = (data) => http.patch("/users/me", data);
 // Travels
 const getTravels = () => http.get("/travels");
 const getTravelById = (id) => http.get(`/travels/${id}`);
+const getTravelByIdWithComments = (id) => http.get(`/travels/${id}/comments`);
 const addTravel = (data) => http.post("/travels", data);
 const updateTravel = (id, data) => http.put(`/travels/${id}`, data);
 const deleteTravel = (id) => http.delete(`/travels/${id}`);
@@ -31,6 +32,12 @@ const getUserTravels = (userId) => http.get(`/users/${userId}/travels`);
 
 // Comments
 const getComments = () => http.get("/comments");
+const getCommentsByTravel = (travelId) => http.get(`/travels/${travelId}/comments`)
+  .then((data) => data.comments || []); // Asegura que siempre sea un array
+
+const addComment = (commentData) => {
+  return http.post(`/comments`, commentData);
+};
 
 export {
   profile,
@@ -39,6 +46,7 @@ export {
   destroySession,
   getTravels,
   getTravelById,
+  getTravelByIdWithComments,
   addTravel,
   updateTravel,
   deleteTravel,
@@ -46,4 +54,6 @@ export {
   updateUser,
   getTravelsByCategory,
   getUserTravels,
+  getCommentsByTravel,
+  addComment,
 };

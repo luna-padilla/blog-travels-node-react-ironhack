@@ -1,79 +1,96 @@
 const Travel = require("../models/travel.model");
-module.exports.getTravels = (req, res, next) => {
-  Travel.find({})
-    .then((travels) => res.send(travels))
-    .catch((err) => console.error(err));
-};
+const User = require("../models/user.model");
+const Comment = require("../models/comment.model");
+const createError = require("http-errors");
 
-module.exports.getTravelById = (req, res, next) => {
-  const { id } = req.params;
-
-  Travel.findById(id)
-    .then((travel) => {
-      if (!travel) {
-        return res.status(404).json({ message: "Travel not found" });
-      }
-      res.json(travel);
-    })
-    .catch((err) => next(err));
-};
-
-module.exports.addTravel = (req, res, next) => {
-  const { image, title, subtitle, description, comments } = req.body;
-
-  Travel.create({ image, title, subtitle, description, comments })
-    .then((travel) => res.status(201).json(travel))
-    .catch((err) => next(err));
-};
-module.exports.putTravel = async (req, res) => {
+module.exports.getTravels = async (req, res, next) => {
   try {
-    const { id } = req.params; // Obtiene el ID de la URL
-    const updateData = req.body; // Datos a actualizar
-
-    // Encuentra y actualiza el viaje
-    const updatedTravel = await Travel.findByIdAndUpdate(id, updateData, {
-      new: true,
-    });
-
-    if (!updatedTravel) {
-      return res.status(404).json({ message: "Travel not found" });
-    }
-
-    res.status(200).json(updatedTravel);
+    const travels = await Travel.find({});
+    res.json(travels);
   } catch (error) {
-    res.status(500).json({ message: "Error updating travel", error });
+    next(error);
   }
 };
 
-module.exports.patchTravel = async (req, res) => {
+module.exports.getTravelById = async (req, res, next) => {
   try {
-    const { id } = req.params; // Obtiene el ID del viaje de la URL
-    const updateData = req.body; // Datos que se quieren actualizar (parcialmente)
-
-    const updatedTravel = await Travel.findByIdAndUpdate(id, updateData, {
-      new: true,
-    });
-    if (!updatedTravel) {
-      return res.status(404).json({ message: "Travel not found" });
+    const travel = await Travel.findById(req.params.id);
+    if (!travel) {
+      throw createError(404, "Travel not found");
     }
-    res.status(200).json(updatedTravel);
+    res.json(travel);
   } catch (error) {
-    res.status(500).json({ message: "Error updating travel", error });
+    next(error);
   }
 };
 
-module.exports.deleteTravel = async (req, res) => {
+module.exports.getTravelByIdWithComments = async (req, res, next) => {
   try {
-    const { id } = req.params; // Obtiene el ID del viaje de la URL
+    const travel = await Travel.findById(req.params.id).populate("comments");
+    if (!travel) {
+      throw createError(404, "Travel not found");
+    }
+    res.json(travel);
+  } catch (error) {
+    next(error);
+  }
+};
 
+module.exports.addTravel = async (req, res, next) => {
+  try {
+    const { image, title, subtitle, description } = req.body;
+    const createdBy = req.user._id; // Se asume que el usuario está autenticado
+    
+    const newTravel = await Travel.create({ image, title, subtitle, description, createdBy });
+    
+    await User.findByIdAndUpdate(createdBy, { $push: { createdTravels: newTravel._id } });
+    
+    res.status(201).json(newTravel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.putTravel = async (req, res, next) => {
+  try {
+    const updatedTravel = await Travel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedTravel) {
+      throw createError(404, "Travel not found");
+    }
+    res.json(updatedTravel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.patchTravel = async (req, res, next) => {
+  try {
+    const updatedTravel = await Travel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedTravel) {
+      throw createError(404, "Travel not found");
+    }
+    res.json(updatedTravel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.deleteTravel = async (req, res, next) => {
+  try {
+    const { id } = req.params;
     const deletedTravel = await Travel.findByIdAndDelete(id);
     if (!deletedTravel) {
-      return res.status(404).json({ message: "Travel not found" });
+      throw createError(404, "Travel not found");
     }
-    res
-      .status(200)
-      .json({ message: "Travel deleted successfully", travel: deletedTravel });
+    
+    // Eliminar referencia en usuarios
+    await User.updateMany({ createdTravels: id }, { $pull: { createdTravels: id } });
+    
+    // Eliminar comentarios asociados
+    await Comment.deleteMany({ travel: id });
+    
+    res.json({ message: "Travel deleted successfully", travel: deletedTravel });
   } catch (error) {
-    res.status(500).json({ message: "Error deleting travel", error });
+    next(error);
   }
 };

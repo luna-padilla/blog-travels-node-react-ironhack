@@ -5,14 +5,22 @@ const travelSchema = new mongoose.Schema({
   title: { type: String, required: true },
   subtitle: { type: String },
   description: { type: String, required: true },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }], // Relación 1:N con comentarios
+  createdBy: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User", 
+    required: true 
+  }, // Usuario que creó el viaje
+  comments: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "Comment" 
+  }] // Relación 1:N con comentarios
 }, {
   timestamps: { createdAt: 'created_at' },
   toJSON: {
     transform: function (doc, ret) {
-      ret.id = doc._id; // Convierte _id a id
-      delete ret._id; // Elimina _id del resultado
-      delete ret.__v; // Opcional: elimina __v (control de versión)
+      ret.id = doc._id; 
+      delete ret._id; 
+      delete ret.__v; 
       return ret;
     },
   },

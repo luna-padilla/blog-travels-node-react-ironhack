@@ -5,6 +5,6 @@ const CORS_ORIGINS = (process.env.CORS_ORIGINS || "http://localhost:5173")
     return origin.trim();
   });
 module.exports.cors = cors({
-  origin: process.env.CORS_ORIGINS,
+  origin: CORS_ORIGINS,
   credentials: true,
 });
