@@ -4,7 +4,7 @@ import { useAuthContext } from "../../../contexts/auth-context";
 function Navbar() {
   const { user, logout } = useAuthContext();
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg">
       <div className="container">
         <Link className="navbar-brand" to="/">
           Blog mis viajes

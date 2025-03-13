@@ -24,7 +24,7 @@ function TravelList({ category }) {
   return (
     <div className="row">
       {travels.map((travel) => (
-        <div key={travel.id} className="col-md-12">
+        <div key={travel.id} className="col-md-12 p-4">
           <TravelItem travel={travel} />
         </div>
       ))}

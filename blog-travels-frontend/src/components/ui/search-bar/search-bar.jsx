@@ -29,7 +29,7 @@ function SearchBar() {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <button
-          className="btn btn-danger btn-lg"
+          className="btn btn-lg btn-browser"
           type="submit"
           id="button-search"
         >

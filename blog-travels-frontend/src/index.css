@@ -1,16 +1,94 @@
 /* Colores seleccionados */
 :root {
-  --primary-color: #06257bdc;
-  /* Azul */
-  --secondary-color: #918361;
-  /* Gris oscuro */
-  --white: #fff;
+  --primary-color: #8ED1DA;
+  --secondary-color: #A59FF5;
+  --tertiary-color: rgba(228, 228, 228, 0.267);
+  --light-blue: #A0D0F5;
+  --light-green: #9FF5E3;
+  --dark-blue: #9FB5F5;
+  --black-blue: rgba(47, 42, 84, 0.763);
+  --grey: rgba(244, 241, 241, 0.767);
+  --middle-grey: #808c97;
+  --title-blue: #5f7eda;
 }
+
+.navbar {
+  background: var(--dark-blue);
+}
+
+.navbar a {
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn-browser {
+  background: var(--dark-blue);
+  color: rgb(255, 255, 255) !important;
+}
+
+img {
+  width: 320px;
+  height: 180px;
+}
+
+body {
+  background: rgba(245, 245, 245, 0.579);
+}
+
+/* estios de travel */
+
+ .travel-item {
+  min-height: 400px;
+  border: 2px solid #ede5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  padding:  15px;
+  background-color: var(--grey);
+}
+
+.travel-title {
+  font-size: 1.6rem;
+  /* Tamaño más grande */
+  font-weight: bold;
+  /* Negrita */
+  color: var(--title-blue);
+  /* Color oscuro */
+  margin-bottom: 1.7rem;
+  /* Separación */
+}
+
+.travel-description {
+  font-size: 1.2rem;
+  color: var(--middle-grey);
+  line-height: 1.6;
+  /* Más legible */
+}
+
+
+.travel-img {
+  width: 100%;
+  /* Ocupa todo el ancho del contenedor */
+  height: 250px;
+  /* Altura fija para todas las imágenes */
+  object-fit: cover;
+  /* Ajuste para evitar distorsión */
+  border-radius: 8px;
+}
+
+.btn-sm {
+  margin-top: 30px;
+  padding: 10px 16px;
+  /* Botón más pequeño */
+  font-size: 1rem;
+  /* Tamaño de texto más parecido al contenido */
+  background-color: var(--secondary-color);
+  border: none;
+}
+
 
 /* Estilos para las pestañas */
 .custom-tabs .nav-link {
-  color: var(--secondary-color);
-  background: var(--white);
+  color: var(--primary-color);
+  background: var(--dark-blue);
   border: 1px solid var(--secondary-color);
   margin-right: 5px;
   border-radius: 8px 8px 0 0;
@@ -20,20 +98,20 @@
 
 .custom-tabs .nav-link:hover {
   background: var(--secondary-color);
-  color: var(--white);
+  color: var(--dark-blue);
 }
 
 .custom-tabs .nav-link.active {
   background: var(--primary-color);
-  color: var(--white);
+  color: var(--dark-blue);
   font-weight: bold;
   border-color: var(--primary-color);
 }
 
 /* Contenedor de contenido */
 .custom-tab-content {
-  background: var(--white);
-  color: var(--secondary-color);
+  background: var(--secondary-color);
+  color: var(--black-blue);
   min-height: 120px;
   width: 65%;
   border-radius: 0 0 8px 8px;
@@ -42,7 +120,7 @@
 
 
 .nav-tabs .nav-link {
-  color: #918361;
+  color: var(--secondary-color)
 }
 
 .nav-tabs .nav-link.active {
@@ -51,6 +129,6 @@
 }
 
 .custom-tab-content {
-  background: white;
+  background-color: var(--tertiary-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

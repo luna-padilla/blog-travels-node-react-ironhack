@@ -1,22 +1,29 @@
 :root {
-  --primary-color: #06257bdc;
-  /* Azul */
-  --secondary-color: #918361;
-  /* Gris oscuro */
-  --white: #fff;
+  --primary-color: #8ED1DA;
+  --secondary-color: #A59FF5;
+  --tertiary-color: rgba(228, 228, 228, 0.267);
+  --light-blue: #A0D0F5;
+  --light-green: #9FF5E3;
+  --dark-blue: #9FB5F5;
+  --black-blue: rgba(47, 42, 84, 0.763);
+  --grey: rgba(244, 241, 241, 0.767);
+  --middle-grey: #808c97;
+  --title-blue: #5f7eda;
 }
 
+
 .my-footer {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   padding: 20px 0;
-  color: var(--white); /* Añadido para el texto blanco */
+  color: var(--grey);
   margin-top: 60px;
 }
 
 .my-footer h5 {
   font-weight: bold;
   margin-bottom: 15px;
-  color: var(--white); /* Añadido para el texto blanco */
+  color: var(--tertiary-color);
+  
 }
 
 .my-footer p,
@@ -26,7 +33,8 @@
 }
 
 .my-footer a {
-  color: var(--white); /* Añadido para el texto blanco */
+  color: var(--tertiary-color);
+  
   text-decoration: none;
 }
 
