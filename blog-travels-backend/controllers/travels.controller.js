@@ -26,7 +26,13 @@ module.exports.getTravelById = async (req, res, next) => {
 
 module.exports.getTravelByIdWithComments = async (req, res, next) => {
   try {
-    const travel = await Travel.findById(req.params.id).populate("comments");
+    const travel = await Travel.findById(req.params.id).populate({
+      path: "comments",
+      populate: {
+        path: "createdBy",
+        select: "name avatar", // Solo traemos name y avatar
+      },
+    });
     if (!travel) {
       throw createError(404, "Travel not found");
     }
