@@ -11,15 +11,6 @@
   --title-blue: #5f7eda;
 }
 
-
-.my-footer {
-  min-height: 400px;
-  background-color: var(--middle-grey);
-  color: var(--grey);
-  margin-top: 130px;
-  line-height: 33px;
-}
-
 .my-footer h5 {
   font-weight: bold;
   margin-bottom: 30px;
@@ -68,3 +59,39 @@
 .social-icon:hover {
   color: #ffffff;
 }
+
+
+/* Efecto wave */
+.my-footer {
+  background: linear-gradient(135deg, #8ED1DA, #a59ff5);
+  padding: 40px 0;
+  position: relative;
+  color: white;
+  overflow: hidden;
+  min-height: 400px;
+  line-height: 33px;
+  margin-top: 130px;
+}
+
+/* .my-footer::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(245, 245, 245, 0.579);
+  clip-path: ellipse(40% 80% at 40% 0);
+} */
+
+/* .my-footer::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: var(--tertiary-color);
+  clip-path: ellipse(50% 80% at 50% 20%);
+} */
+

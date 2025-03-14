@@ -29,11 +29,12 @@ const deleteTravel = (id) => http.delete(`/travels/${id}`);
 const getTravelsByCategory = (category) =>
   http.get("/travels", { params: { category } });
 const getUserTravels = (userId) => http.get(`/users/${userId}/travels`);
+const searchTravels = (query) => http.get(`/travels/search?query=${query}`);
 
 // Comments
 const getComments = () => http.get("/comments");
-const getCommentsByTravel = (travelId) => http.get(`/travels/${travelId}/comments`)
-  .then((data) => data.comments || []); // Asegura que siempre sea un array
+const getCommentsByTravel = (travelId) =>
+  http.get(`/travels/${travelId}/comments`).then((data) => data.comments || []); // Asegura que siempre sea un array
 
 const addComment = (commentData) => {
   return http.post(`/comments`, commentData);
@@ -56,4 +57,5 @@ export {
   getUserTravels,
   getCommentsByTravel,
   addComment,
+  searchTravels,
 };

@@ -21,10 +21,11 @@ router.post("/sessions", sessions.create);
 router.delete("/sessions", auth.isAuthenticated, sessions.destroy);
 
 // Travels
+router.post("/travels", travels.addTravel);
 router.get("/travels", travels.getTravels);
+router.get("/travels/search", travels.searchTravels);
 router.get("/travels/:id", travels.getTravelById);
 router.get("/travels/:id/comments", travels.getTravelByIdWithComments);
-router.post("/travels", travels.addTravel);
 router.put("/travels/:id", travels.putTravel);
 router.patch("/travels/:id", travels.patchTravel);
 router.delete("/travels/:id", travels.deleteTravel);

@@ -13,15 +13,17 @@
 }
 
 .navbar {
-  background: var(--dark-blue);
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 5px;
 }
-
 .navbar-nav .dropdown .btn {
   border: none;
 }
 
 .navbar-nav .dropdown .btn a {
   color: rgb(255, 255, 255) !important;
+
 }
 
 .navbar-nav .dropdown .dropdown-menu a {
@@ -30,6 +32,7 @@
 
 .navbar a {
   color: rgb(255, 255, 255) !important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .btn-browser {
@@ -43,7 +46,7 @@ img {
 }
 
 body {
-  background: rgba(245, 245, 245, 0.579);
+  background-color: rgba(245, 245, 245, 0.579);
 }
 
 /* estios de travel */
@@ -106,6 +109,7 @@ body {
   border-radius: 8px 8px 0 0;
   padding: 10px 15px;
   transition: background 0.3s ease, color 0.3s ease;
+  
 }
 
 .custom-tabs .nav-link:hover {
@@ -128,18 +132,38 @@ body {
   width: 100%;
   border-radius: 0 0 8px 8px;
   border: 1px solid var(--secondary-color);
+  
 }
 
 .nav-tabs .nav-link {
-  color: var(--secondary-color)
+  color: var(--secondary-color);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1)!important;
 }
 
 .nav-tabs .nav-link.active {
   background-color: var(--primary-color);
   color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2)!important;
 }
 
 .custom-tab-content {
   background-color: var(--tertiary-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner h1,
+.banner p {
+  color: white;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.banner {
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    url("/images/portada-viajes.jpg") center/cover no-repeat!important; */
+
+  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    url("/images/banner.webp") center/cover no-repeat!important; */
+  
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    url("/images/passport.jpg") center/cover no-repeat!important;
 }
