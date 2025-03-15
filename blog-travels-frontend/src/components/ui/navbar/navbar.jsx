@@ -101,7 +101,7 @@ function Navbar() {
                     Log in
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item sign-up">
                   <Link className="nav-link" aria-current="page" to="/register">
                     Sign up
                   </Link>

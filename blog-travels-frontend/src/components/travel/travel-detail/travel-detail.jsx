@@ -49,10 +49,14 @@ function TravelDetail() {
 
   return (
     <div className="container mt-5">
-      <h2 className="text-primary fw-bold text-center mb-4">{travel.title}</h2>
+      <h2 className="text-primary fw-bold text-center mb-4 shadows-into-light-regular">
+        {" "}
+        {String(travel.title).charAt(0).toUpperCase() +
+          String(travel.title).slice(1)}
+      </h2>
 
       <div className="row align-items-center">
-        <div className="col-md-6">
+        <div className="col-md-12 mb-5">
           <img
             src={travel.image}
             alt={travel.title}
@@ -60,23 +64,33 @@ function TravelDetail() {
             style={{ maxHeight: "400px", objectFit: "cover", width: "100%" }}
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-12">
           <p className="fs-5 text-muted">{travel.description}</p>
         </div>
       </div>
 
-      <div className="mt-5">
+      <div className="mt-5 mb-5">
         <h4 className="fw-bold">Comentarios</h4>
         <div className="card shadow-sm p-3">
           {comments.length > 0 ? (
             <ul className="list-group list-group-flush">
               {comments.map((comment) => (
-                <li key={comment.id} className="list-group-item d-flex align-items-center">
+                <li
+                  key={comment.id}
+                  className="list-group-item d-flex align-items-center"
+                >
                   <img
-                    src={comment.createdBy?.avatar || "https://via.placeholder.com/40"}
+                    src={
+                      comment.createdBy?.avatar ||
+                      "https://via.placeholder.com/40"
+                    }
                     alt={comment.createdBy?.name || "Usuario"}
                     className="rounded-circle me-3"
-                    style={{ width: "40px", height: "40px", objectFit: "cover" }}
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      objectFit: "cover",
+                    }}
                   />
                   <div>
                     <p className="mb-1 fw-semibold">
@@ -102,7 +116,10 @@ function TravelDetail() {
                 placeholder="Escribe un comentario..."
               ></textarea>
               <div className="d-flex justify-content-end mt-2">
-                <button className="btn btn-primary btn-sm" onClick={handleAddComment}>
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={handleAddComment}
+                >
                   Comentar 💬
                 </button>
               </div>
@@ -110,7 +127,10 @@ function TravelDetail() {
           ) : (
             <div className="text-center mt-3">
               <p className="text-muted">Debes iniciar sesión para comentar.</p>
-              <button className="btn btn-outline-primary" onClick={() => navigate("/login")}>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => navigate("/login")}
+              >
                 Iniciar sesión
               </button>
             </div>

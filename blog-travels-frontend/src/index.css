@@ -1,7 +1,7 @@
 /* Colores seleccionados */
 :root {
   --primary-color: #8ED1DA;
-  --secondary-color: #A59FF5;
+  --secondary-color: #a59ff5;
   --tertiary-color: rgba(228, 228, 228, 0.267);
   --light-blue: #A0D0F5;
   --light-green: #9FF5E3;
@@ -13,17 +13,18 @@
 }
 
 .navbar {
-  background-color: var(--primary-color);
+  background-color: var(--tertiary-color);
   padding: 10px 20px;
-  border-radius: 5px;
+  border-top: 0.4em solid var(--primary-color);
 }
+
 .navbar-nav .dropdown .btn {
   border: none;
 }
 
 .navbar-nav .dropdown .btn a {
-  color: rgb(255, 255, 255) !important;
-
+  color: var(--middle-grey) !important;
+  font-weight: 800;
 }
 
 .navbar-nav .dropdown .dropdown-menu a {
@@ -31,12 +32,19 @@
 }
 
 .navbar a {
-  color: rgb(255, 255, 255) !important;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  color: var(--middle-grey) !important;
+  font-weight: 600;
+  font-size: 1.4em;
+  /* text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); */
 }
 
 .btn-browser {
-  background: var(--dark-blue);
+  background: var(--primary-color);
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn-browser:hover {
+  background: var(--title-blue);
   color: rgb(255, 255, 255) !important;
 }
 
@@ -57,7 +65,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   padding: 15px;
-  background-color: var(--grey);
+  /* background-color: var(--grey); */
 }
 
 .travel-title {
@@ -95,7 +103,16 @@ body {
   /* Botón más pequeño */
   font-size: 1rem;
   /* Tamaño de texto más parecido al contenido */
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border: none;
+}
+.btn-sm:hover {
+  margin-top: 30px;
+  padding: 10px 16px;
+  /* Botón más pequeño */
+  font-size: 1rem;
+  /* Tamaño de texto más parecido al contenido */
+  background-color: var(--title-blue);
   border: none;
 }
 
@@ -104,12 +121,12 @@ body {
 .custom-tabs .nav-link {
   color: var(--primary-color);
   background: var(--dark-blue);
-  border: 1px solid var(--secondary-color);
+  border: 1px solid var(--primary-color);
   margin-right: 5px;
   border-radius: 8px 8px 0 0;
   padding: 10px 15px;
   transition: background 0.3s ease, color 0.3s ease;
-  
+
 }
 
 .custom-tabs .nav-link:hover {
@@ -126,28 +143,27 @@ body {
 
 /* Contenedor de contenido */
 .custom-tab-content {
-  background: var(--secondary-color);
+  /* background: var(--secondary-color); */
   color: var(--black-blue);
   min-height: 120px;
   width: 100%;
   border-radius: 0 0 8px 8px;
   border: 1px solid var(--secondary-color);
-  
 }
 
 .nav-tabs .nav-link {
-  color: var(--secondary-color);
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1)!important;
+  /* color: var(--secondary-color); */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .nav-tabs .nav-link.active {
   background-color: var(--primary-color);
   color: white;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2)!important;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important;
 }
 
 .custom-tab-content {
-  background-color: var(--tertiary-color);
+  /* background-color: var(--tertiary-color); */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -163,7 +179,101 @@ body {
 
   /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
     url("/images/banner.webp") center/cover no-repeat!important; */
-  
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
-    url("/images/passport.jpg") center/cover no-repeat!important;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    url("/images/passport.jpg") center/cover no-repeat !important;
+}
+
+.popular-destinations {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.popular-destinations .card {
+  border: none;
+  transition: transform 0.3s ease-in-out;
+  padding: 15px;
+}
+
+.popular-destinations .card:hover {
+  transform: scale(1.05);
+}
+
+.popular-destinations img {
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+
+.sign-up{
+  border:3px solid #8ED1DA;
+  border-radius: 8px;
+  margin-left: 15px;
+}
+
+
+
+/* footer */
+
+
+.my-footer {
+  background-color: var(--primary-color);
+  margin-top: 130px;
+}
+
+.my-footer h5 {
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: var(--tertiary-color);
+  font-size: 1.7em;
+}
+
+.my-footer p,
+.my-footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.my-footer a {
+  color: var(--tertiary-color);
+  text-decoration: none;
+  font-size: 1.3em;
+}
+
+.my-footer a:hover {
+  text-decoration: underline;
+}
+
+.my-footer .text-center {
+  margin-top: 20px;
+}
+
+.footer-link {
+  color: #fffcfa !important;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  margin: 0 10px;
+  color: #adb5bd;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+}
+
+/* fuente google */
+.shadows-into-light-regular {
+  font-family: "Shadows Into Light", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
