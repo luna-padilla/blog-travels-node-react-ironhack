@@ -18,6 +18,7 @@ const register = (user) => http.post("/users", user);
 const login = (user) => http.post("/sessions", user);
 const destroySession = () => http.delete("/sessions");
 const updateUser = (data) => http.patch("/users/me", data);
+const getUser = (id) => http.get(`/users/${id}`);
 
 // Travels
 const getTravels = () => http.get("/travels");
@@ -58,4 +59,5 @@ export {
   getCommentsByTravel,
   addComment,
   searchTravels,
+  getUser,
 };

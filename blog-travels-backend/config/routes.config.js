@@ -11,9 +11,10 @@ const mongoose = require("mongoose");
 
 /* Users */
 router.post("/users", storage.single("avatar"), users.create);
-router.get("/users/:id/travels", auth.isAuthenticated, users.getUserTravels);
 router.patch("/users/me", auth.isAuthenticated, users.update);
 router.get("/users/me", auth.isAuthenticated, users.profile);
+router.get("/users/:id/", users.get);
+router.get("/users/:id/travels", auth.isAuthenticated, users.getUserTravels);
 router.get("/users/:id/validate", users.validate);
 
 /* Sessions */

@@ -8,7 +8,7 @@ function PopularDestinations() {
     const fetchImages = async () => {
       try {
         // Lorem Picsum no tiene imágenes específicas de ciudades, pero podemos simularlo
-        const fetchedDestinations = Array.from({ length: 6 }).map((_, index) => ({
+        const fetchedDestinations = Array.from({ length: 3 }).map((_, index) => ({
           id: index + 1,
           name: `Destino ${index + 1}`,
           image: `https://picsum.photos/300/200?random=${index + 1}`, // Imagen aleatoria

@@ -1,37 +1,48 @@
 import { Link } from "react-router-dom";
 
-function TravelItem({ travel }) {
-  console.log(travel);
-  const {created_at, title, id} = travel
-  const date = new Date(created_at);
+import { getUser } from "../../../services/api-service";
+import { useEffect, useState } from "react";
 
+function TravelItem({ travel }) {
+  const [user, setUser] = useState();
+  const { created_at, title, id, description, image, createdBy } = travel;
+  const route = `/travels/${id}`;
+  const shortDescription = description.slice(0, 140);
+  const titleToUpperCase =
+    String(title).charAt(0).toUpperCase() + String(title).slice(1);
+  const date = new Date(created_at);
   const options = { year: "numeric", month: "long", day: "numeric" };
   const formatedDate = date.toLocaleDateString("en-NS", options);
 
+  useEffect(() => {
+    getUser(createdBy)
+      .then((data) => {
+        setUser(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user:", error);
+      });
+  }, [createdBy]);
+
   return (
     <div className="row align-items-center travel-item">
-      {/* Imagen con tamaño fijo */}
-      <div className="col-md-4">
-        <img src={travel.image} alt={title} className="travel-img" />
+      <div className="col-md-12">
+        <img src={image} alt={title} className="travel-img" />
       </div>
 
-      {/* Contenido con mejor estilización */}
-      <div className="col-md-8 d-flex flex-column justify-content-between">
-        <div>
-          <h3 className="travel-title shadows-into-light-regular">
-            {String(title).charAt(0).toUpperCase() +
-              String(title).slice(1)}
+      <div className="col-md-12 d-flex flex-column justify-content-between">
+        <div className="d-flex flex-column">
+          <h3 className="travel-title shadows-into-light-regular text-center mt-4">
+            {titleToUpperCase}
           </h3>
-          <hr style={{ width: "20px", marginLeft: "100px" }} />
+          <hr style={{ width: "60px", marginLeft: "280px" }} />
           <p>Posted on: {formatedDate}</p>
-          <p className="travel-description">
-            {travel.description.slice(0, 200)}...
-          </p>
+          <p>Created by: {user ? user.name : "Unknown"}</p>
+          <p className="travel-description">{shortDescription}...</p>
         </div>
 
-        {/* Botón alineado a la derecha */}
         <div className="text-end">
-          <Link to={`/travels/${id}`} className="btn btn-sm btn-primary">
+          <Link to={route} className="btn btn-sm btn-primary">
             Read more
           </Link>
         </div>

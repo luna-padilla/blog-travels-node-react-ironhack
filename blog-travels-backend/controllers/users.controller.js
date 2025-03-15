@@ -23,6 +23,24 @@ module.exports.create = async (req, res, next) => {
   }
 };
 
+module.exports.get = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    if (error) {
+      return res.status(400).json({ message: "Invalid user ID" });
+    }
+    next(error);
+  }
+};
 module.exports.update = async (req, res, next) => {
   try {
     const updates = ["email", "password", "name", "avatar"].reduce(
