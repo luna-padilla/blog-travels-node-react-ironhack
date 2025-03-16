@@ -48,10 +48,6 @@
   color: rgb(255, 255, 255) !important;
 }
 
-img {
-  width: 320px;
-  height: 180px;
-}
 
 body {
   background-color: rgba(245, 245, 245, 0.579);
@@ -60,7 +56,7 @@ body {
 /* estios de travel */
 
 .travel-item {
-  min-height: 400px;
+  min-height: 800px;
   border: 2px solid #ede5e5;
   border-radius: 8px;
   overflow: hidden;
@@ -73,7 +69,7 @@ body {
   /* Tamaño más grande */
   font-weight: bold;
   /* Negrita */
-  color: var(--title-blue);
+  color: var(--middle-grey);
   /* Color oscuro */
   margin-bottom: 1.7rem;
   /* Separación */
@@ -106,6 +102,7 @@ body {
   background-color: var(--primary-color);
   border: none;
 }
+
 .btn-sm:hover {
   margin-top: 30px;
   padding: 10px 16px;
@@ -121,7 +118,6 @@ body {
 .custom-tabs .nav-link {
   color: var(--primary-color);
   background: var(--dark-blue);
-  border: 1px solid var(--primary-color);
   margin-right: 5px;
   border-radius: 8px 8px 0 0;
   padding: 10px 15px;
@@ -129,30 +125,33 @@ body {
 
 }
 
-.custom-tabs .nav-link:hover {
+/* .custom-tabs .nav-link:hover {
   background: var(--secondary-color);
   color: var(--dark-blue);
+  } */
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+color: white;
+  background: rgb(180, 174, 174);
 }
 
 .custom-tabs .nav-link.active {
   background: var(--primary-color);
   color: var(--dark-blue);
   font-weight: bold;
-  border-color: var(--primary-color);
 }
 
 /* Contenedor de contenido */
 .custom-tab-content {
-  /* background: var(--secondary-color); */
   color: var(--black-blue);
   min-height: 120px;
   width: 100%;
   border-radius: 0 0 8px 8px;
-  border: 1px solid var(--secondary-color);
 }
 
 .nav-tabs .nav-link {
-  /* color: var(--secondary-color); */
+  color: var(--middle-grey);
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -160,11 +159,6 @@ body {
   background-color: var(--primary-color);
   color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) !important;
-}
-
-.custom-tab-content {
-  /* background-color: var(--tertiary-color); */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .banner h1,
@@ -181,7 +175,7 @@ body {
     url("/images/banner.webp") center/cover no-repeat!important; */
 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
-    url("/images/passport.jpg") center/cover no-repeat !important;
+    url("/images/banner.webp") center/cover no-repeat !important;
 }
 
 .popular-destinations {
@@ -207,8 +201,8 @@ body {
 }
 
 
-.sign-up{
-  border:3px solid #8ED1DA;
+.sign-up {
+  border: 3px solid #8ED1DA;
   border-radius: 8px;
   margin-left: 15px;
 }
@@ -264,18 +258,37 @@ body {
 .social-icon {
   font-size: 1.5rem;
   margin: 0 10px;
-  color: #adb5bd;
+  color: #f1f6fb !important;
   transition: color 0.3s ease-in-out;
 }
 
 .social-icon:hover {
-  color: #ffffff;
+  color: var(--middle-grey) !important;
 }
 
 /* fuente google */
-.shadows-into-light-regular {
+/* .shadows-into-light-regular {
   font-family: "Shadows Into Light", cursive;
   font-weight: 700;
   font-style: normal;
+} */
+
+.contact {
+  color: white;
 }
 
+.text-primary {
+  color: var(--middle-grey) !important;
+  font-size: 2.2rem;
+}
+
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-color) !important;
+  border: 1px solid var(--tertiary-color);
+  color: rgb(255, 251, 251) !important;
+}
+
+.pagination .page-item .page-link {
+  color: var(--middle-grey) !important;
+}

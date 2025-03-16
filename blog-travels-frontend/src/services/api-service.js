@@ -27,8 +27,12 @@ const getTravelByIdWithComments = (id) => http.get(`/travels/${id}/comments`);
 const addTravel = (data) => http.post("/travels", data);
 const updateTravel = (id, data) => http.put(`/travels/${id}`, data);
 const deleteTravel = (id) => http.delete(`/travels/${id}`);
-const getTravelsByCategory = (category) =>
-  http.get("/travels", { params: { category } });
+// const getTravelsByCategory = (category) =>
+//   http.get("/travels", { params: { category } });
+// api-service.js
+const getTravelsByCategory = (category, page = 1, limit = 4) => {
+  return http.get(`/travels?category=${category}&page=${page}&limit=${limit}`);
+};
 const getUserTravels = (userId) => http.get(`/users/${userId}/travels`);
 const searchTravels = (query) => http.get(`/travels/search?query=${query}`);
 

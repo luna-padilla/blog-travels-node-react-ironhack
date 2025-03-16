@@ -20,7 +20,7 @@ function SearchPage() {
 
   return (
     <div className="container mt-4">
-      <h2>Search results for: "{query}"</h2>
+      {/* <h2>Search results for: "{query}"</h2> */}
 
       {loading ? (
         <p>Loading...</p>

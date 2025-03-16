@@ -3,10 +3,35 @@ const User = require("../models/user.model");
 const Comment = require("../models/comment.model");
 const createError = require("http-errors");
 
+// module.exports.getTravels = async (req, res, next) => {
+//   try {
+//     const travels = await Travel.find({});
+//     res.json(travels);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
+
 module.exports.getTravels = async (req, res, next) => {
   try {
-    const travels = await Travel.find({});
-    res.json(travels);
+    const page = parseInt(req.query.page) || 1; // Página actual (por defecto 1)
+    const limit = parseInt(req.query.limit) || 10; // Límite de documentos por página (por defecto 10)
+    const skip = (page - 1) * limit; // Calcular el número de documentos a saltar
+
+    const travels = await Travel.find({})
+      .skip(skip)
+      .limit(limit);
+
+    const totalTravels = await Travel.countDocuments({}); // Obtener el total de documentos
+
+    res.json({
+      travels,
+      total: totalTravels,
+      page,
+      limit,
+      totalPages: Math.ceil(totalTravels / limit),
+    });
   } catch (error) {
     next(error);
   }

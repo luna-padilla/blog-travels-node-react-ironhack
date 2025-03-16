@@ -61,7 +61,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ['admin', 'guest', 'user'],
-      default: 'guest'
+      default: 'user'
     },
     createdTravels: [{
       type: mongoose.Schema.Types.ObjectId,

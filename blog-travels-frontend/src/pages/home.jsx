@@ -60,7 +60,7 @@ function HomePage() {
             </li>
           </ul>
 
-          <div className="tab-content mt-3 p-3 border rounded custom-tab-content">
+          <div className="tab-content mt-3 p-3  custom-tab-content">
             {activeTab === "featured" && <TravelList category="featured" />}
             {activeTab === "newest" && <TravelList category="newest" />}
             {activeTab === "bloggers" && <TravelList category="bloggers" />}
