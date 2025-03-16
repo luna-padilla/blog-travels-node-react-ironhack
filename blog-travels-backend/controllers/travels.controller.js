@@ -5,14 +5,27 @@ const createError = require("http-errors");
 
 module.exports.getTravels = async (req, res, next) => {
   try {
-    const page = parseInt(req.query.page) || 1; // Página actual (por defecto 1)
-    const limit = parseInt(req.query.limit) || 4; // Límite de documentos por página (por defecto 4)
-    const skip = (page - 1) * limit; // Calcular el número de documentos a saltar
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 4;
+    const skip = (page - 1) * limit;
+    const category = req.query.category || "featured"; // Obtén la categoría del query
 
-    const travels = await Travel.find({})
-      .skip(skip)
-      .limit(limit);
-    const totalTravels = await Travel.countDocuments({}); // Obtener el total de documentos
+    let sort = {}; // Objeto para definir el orden de los resultados
+
+    switch (category) {
+      case "newest":
+        sort = { createdAt: -1 }; // Ordena por fecha de creación descendente (más recientes primero)
+        break;
+      case "bloggers":
+        sort = { comments: -1 }; // Ordena por número de comentarios descendente (más comentarios primero)
+        break;
+      default: // featured (o cualquier otra categoría)
+        sort = { title: 1 }; // Ordena alfabéticamente por título ascendente
+        break;
+    }
+
+    const travels = await Travel.find({}).sort(sort).skip(skip).limit(limit);
+    const totalTravels = await Travel.countDocuments({});
 
     res.json({
       travels,
@@ -50,8 +63,8 @@ module.exports.searchTravels = async (req, res, next) => {
       $or: [
         { title: { $regex: query, $options: "i" } },
         { subtitle: { $regex: query, $options: "i" } },
-        { description: { $regex: query, $options: "i" } }
-      ]
+        { description: { $regex: query, $options: "i" } },
+      ],
     });
 
     res.json(travels);
