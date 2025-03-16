@@ -10,7 +10,7 @@ const storage = require("./storage.config");
 const mongoose = require("mongoose");
 
 /* Users */
-router.post( "/users", storage.single("avatar"), users.create );
+router.post( "/users", storage.parser.single("avatar"), users.create );
 router.patch("/users/me", auth.isAuthenticated, users.update);
 router.get("/users/me", auth.isAuthenticated, users.profile);
 router.get(  "/users/:id/", users.get );
