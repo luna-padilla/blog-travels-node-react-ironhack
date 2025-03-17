@@ -48,7 +48,7 @@ function TravelDetail() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="container mt-5">
+    <div className="container travel-detail mt-5">
       <h2 className="text-primary fw-bold text-center mb-4 shadows-into-light-regular">
         {" "}
         {String(travel.title).charAt(0).toUpperCase() +
@@ -64,20 +64,20 @@ function TravelDetail() {
             style={{ maxHeight: "400px", objectFit: "cover", width: "100%" }}
           />
         </div>
-        <div className="col-md-12">
+        <div className="col-md-12 travel-description">
           <p className="fs-5 text-muted">{travel.description}</p>
         </div>
       </div>
 
       <div className="mt-5 mb-5">
-        <h4 className="fw-bold">Comentarios</h4>
-        <div className="card shadow-sm p-3">
+        <h4 className="fw-bold"></h4>
+        <div className="p-3">
           {comments.length > 0 ? (
             <ul className="list-group list-group-flush">
               {comments.map((comment) => (
                 <li
                   key={comment.id}
-                  className="list-group-item d-flex align-items-center"
+                  className="list-group-item d-flex align-items-center p-5 mb-3 rounded shadow-sm"
                 >
                   <img
                     src={
@@ -97,6 +97,7 @@ function TravelDetail() {
                       {comment.createdBy?.name || "Usuario Anónimo"}
                     </p>
                     <p className="text-muted">{comment.comment}</p>
+                    <button className="rounded border p-1">Reply</button>
                   </div>
                 </li>
               ))}
@@ -109,7 +110,7 @@ function TravelDetail() {
           {user ? (
             <div className="mt-3">
               <textarea
-                className="form-control"
+                className="form-control shadow-sm p-3"
                 rows="3"
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}

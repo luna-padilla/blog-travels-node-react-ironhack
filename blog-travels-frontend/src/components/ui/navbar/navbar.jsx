@@ -7,12 +7,15 @@ import {
   FaSignInAlt,
   FaUserPlus,
   FaBars,
+  FaMapMarkedAlt,
+  FaLightbulb,
+  FaSuitcaseRolling,
 } from "react-icons/fa";
 
 import { useAuthContext } from "../../../contexts/auth-context";
 
 function Navbar() {
-  const {user, logout} = useAuthContext();
+  const { user, logout } = useAuthContext();
   return (
     <nav className="navbar navbar-expand-lg bg-light shadow-sm">
       <div className="container">
@@ -21,15 +24,15 @@ function Navbar() {
           <FaPlane className="me-1 text-primary" />
           TravelBlog
         </Link> */}
-        <Link className="navbar-brand fw-bold" to="/">
-            <img
-                src="/images/Diseño sin título.png"
-                alt="TravelBlog Logo"
-                className="me-1" // Puedes ajustar el margen aquí
-                style={{ width: '30px', height: '30px' }} // Ajusta el tamaño aquí
-            />
-            TravelBlog
-        </Link>
+        {/* <Link className="navbar-brand fw-bold" to="/">
+          <img
+            src="/images/Diseño sin título.png"
+            alt="TravelBlog Logo"
+            className="me-1" // Puedes ajustar el margen aquí
+            style={{ width: "30px", height: "30px" }} // Ajusta el tamaño aquí
+          />
+          TravelBlog
+        </Link> */}
         {/* Botón para móviles */}
         <button
           className="navbar-toggler"
@@ -51,6 +54,26 @@ function Navbar() {
                 <FaHome className="me-1" /> Home
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/destinations">
+                <FaMapMarkedAlt className="me-1" /> Destinos Populares
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/travel-tips">
+                <FaLightbulb className="me-1" /> Consejos de Viaje
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/gear">
+                <FaSuitcaseRolling className="me-1" /> Recomendaciones de
+                Equipaje
+              </Link>
+            </li>
+
             {user?.role === "admin" && (
               <li className="nav-item">
                 <Link className="nav-link" to="/travel">

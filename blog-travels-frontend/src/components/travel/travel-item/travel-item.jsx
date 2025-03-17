@@ -35,8 +35,9 @@ function TravelItem({ travel }) {
           <h3 className="travel-title shadows-into-light-regular text-center mt-4">
             {titleToUpperCase}
           </h3>
-          <hr style={{ width: "60px", marginLeft: "280px" }} />
-          <p>Posted on: {formatedDate}</p>
+          <hr className="mx-auto" style={{ width: "25%" }} />
+
+          <p className="mt-4">Posted on: {formatedDate}</p>
           <p>Created by: {user ? user.name : "Unknown"}</p>
           <p className="travel-description">{shortDescription}...</p>
         </div>

@@ -14,7 +14,7 @@
 
 .navbar {
   background-color: var(--tertiary-color);
-  padding: 10px 20px;
+  padding: 20px 20px;
   border-top: 0.4em solid var(--primary-color);
 }
 
@@ -23,10 +23,12 @@
   border: none;
 }
 */
-.navbar-nav .dropdown .btn a {
+.navbar-nav .dropdown .btn a,
+.navbar-nav .dropdown .btn {
   color: var(--middle-grey) !important;
   font-weight: 800;
 }
+
 .navbar-nav .dropdown .dropdown-menu a {
   color: var(--middle-grey) !important;
 }
@@ -34,7 +36,7 @@
 .navbar a {
   color: var(--middle-grey) !important;
   font-weight: 600;
-} 
+}
 
 .btn-browser {
   background: var(--primary-color);
@@ -52,6 +54,10 @@ body {
 }
 
 /* estios de travel */
+.travel-detail {
+
+  width: 1000px;
+}
 
 .travel-item {
   min-height: 800px;
@@ -61,22 +67,24 @@ body {
   padding: 15px;
 }
 
-.travel-title {
-  font-size: 1.6rem;
+.travel-detail h2 {
+  font-size: 2.5rem;
   /* Tamaño más grande */
   font-weight: bold;
   /* Negrita */
   color: var(--middle-grey);
   /* Color oscuro */
-  margin-bottom: 1.7rem;
+  margin-bottom: 5rem !important;
   /* Separación */
 }
 
-.travel-description {
+.travel-detail .travel-description {
   font-size: 1.2rem;
   color: var(--middle-grey);
-  line-height: 1.6;
+  line-height: 1.8;
   /* Más legible */
+  margin-bottom: 3rem !important;
+  margin-top: 3rem !important;
 }
 
 
@@ -191,7 +199,16 @@ body {
 
 
 
+.d-grid {
+  justify-items: end !important;
+}
 
+.d-grid>.btn-primary {
+  justify-items: end !important;
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border: none;
+}
 
 
 /* footer */
@@ -225,7 +242,6 @@ body {
 
 .text-primary {
   color: var(--middle-grey) !important;
-  font-size: 2.2rem;
 }
 
 
@@ -241,4 +257,24 @@ body {
 
 .my-travels {
   min-height: 300px;
+}
+
+.modal-content {
+  /* min-width: 700px; */
+}
+
+.modal-content .modal-header {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.modal-content .btn-close {
+  /* filter: invert(1); Convierte el negro en blanco */
+  background-color: white;
+}
+
+.modal-content>.modal-body .btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
 }
