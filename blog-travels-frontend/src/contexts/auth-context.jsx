@@ -20,10 +20,15 @@ export function AuthProvider({ children }) {
     setUser(null);
   }
 
+  function updateUserContext(updatedData) {
+    setUser(prevUser => ({ ...prevUser, ...updatedData }));
+  }
+  
   const contextData = {
     user,
     login,
     logout,
+    updateUserContext,
   };
 
   if (user === undefined) {

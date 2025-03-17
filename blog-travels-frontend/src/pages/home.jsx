@@ -1,7 +1,6 @@
 import { useState } from "react";
 import TravelList from "../components/travel/travel-list/travel-list";
-import SearchBar from "../components/ui/search-bar/search-bar";
-import PopularDestinations from "../components/popular/PopularDestinations";
+import Sidebar from "../components/ui/aside/aside";
 
 function HomePage() {
   const [activeTab, setActiveTab] = useState("featured");
@@ -68,15 +67,8 @@ function HomePage() {
         </div>
 
         {/* columna ppal 2 */}
-        <div className="col-md-4">
-          {/* Search bar */}
-          <div className="container mt-5">
-            <SearchBar />
 
-            {/* Destinos Populares */}
-            <PopularDestinations />
-          </div>
-        </div>
+        <Sidebar></Sidebar>
       </div>
     </>
   );

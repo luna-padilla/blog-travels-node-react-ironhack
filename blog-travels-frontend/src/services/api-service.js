@@ -30,7 +30,7 @@ const deleteTravel = (id) => http.delete(`/travels/${id}`);
 // const getTravelsByCategory = (category) =>
 //   http.get("/travels", { params: { category } });
 // api-service.js
-const getTravelsByCategory = (category, page = 1, limit = 4) => {
+const getTravelsByCategory = (category, page = 1, limit = 6) => {
   return http.get(`/travels?category=${category}&page=${page}&limit=${limit}`);
 };
 const getUserTravels = (userId) => http.get(`/users/${userId}/travels`);

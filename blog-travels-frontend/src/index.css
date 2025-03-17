@@ -44,7 +44,7 @@
 }
 
 .btn-browser:hover {
-  background: var(--title-blue);
+  background: #9ddce6;
   color: rgb(255, 255, 255) !important;
 }
 
@@ -61,7 +61,6 @@ body {
   border-radius: 8px;
   overflow: hidden;
   padding: 15px;
-  /* background-color: var(--grey); */
 }
 
 .travel-title {
@@ -109,7 +108,7 @@ body {
   /* Botón más pequeño */
   font-size: 1rem;
   /* Tamaño de texto más parecido al contenido */
-  background-color: var(--title-blue);
+  background-color: #9ddce6;
   border: none;
 }
 
@@ -124,11 +123,6 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 
 }
-
-/* .custom-tabs .nav-link:hover {
-  background: var(--secondary-color);
-  color: var(--dark-blue);
-  } */
 
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link:hover {
@@ -190,9 +184,6 @@ body {
   padding: 15px;
 }
 
-.popular-destinations .card:hover {
-  /* transform: scale(1.05); */
-}
 
 .popular-destinations img {
   height: 120px;
@@ -201,11 +192,7 @@ body {
 }
 
 
-.sign-up {
-  border: 3px solid #8ED1DA;
-  border-radius: 8px;
-  margin-left: 15px;
-}
+
 
 
 
@@ -217,10 +204,14 @@ body {
   margin-top: 100px;
 }
 
+.my-footer a {
+  line-height: 30px;
+}
+
 .my-footer .copyright {
   background-color: rgba(0, 0, 0, 0.05);
   margin-top: 130px;
-   
+
 }
 
 /* fuente google */
@@ -250,6 +241,6 @@ body {
   color: var(--middle-grey) !important;
 }
 
-.my-travels{
+.my-travels {
   min-height: 300px;
 }
