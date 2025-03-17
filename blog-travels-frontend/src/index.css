@@ -130,6 +130,11 @@ body {
 
 }
 
+.nav-item:hover {
+  background-color: #8ed1da2c;
+  border-radius: 8px;
+}
+
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link:hover {
   color: white;

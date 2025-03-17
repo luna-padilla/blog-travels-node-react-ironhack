@@ -126,7 +126,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link btn btn-primary text-white px-3"
+                    className="nav-link btn text-white px-3"
                     to="/register"
                   >
                     <FaUserPlus className="me-1" /> Sign up

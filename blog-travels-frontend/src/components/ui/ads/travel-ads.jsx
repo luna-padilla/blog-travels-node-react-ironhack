@@ -47,7 +47,7 @@ function TravelAds() {
           <Card.Body>
             <Card.Title>{ads[currentAd]?.title}</Card.Title>
             <Card.Text>{ads[currentAd]?.price} USD</Card.Text>
-            <Button variant="primary" href={ads[currentAd]?.url} target="_blank">
+            <Button variant="primary" style={{backgroundColor:'#8ED1DA', border:'none'}} href={ads[currentAd]?.url} target="_blank">
               View Deal
             </Button>
           </Card.Body>
