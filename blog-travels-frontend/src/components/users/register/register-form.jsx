@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Api from "../../../services/api-service";
-import { useAuthContext } from "../../../contexts/auth-context";
+// import { useAuthContext } from "../../../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
 
 function RegisterForm() {
   const { register, handleSubmit, formState, setError } = useForm();
-  const { login } = useAuthContext();
+  // const { login } = useAuthContext();
   const navigate = useNavigate();
   const errors = formState.errors;
   const [avatarPreview, setAvatarPreview] = useState(null);
@@ -21,8 +21,8 @@ function RegisterForm() {
 
     try {
       await Api.register(formData);
-      const data = await Api.login(user);
-      login(data);
+      // const data = await Api.login(user);
+      // login(data);
       navigate("/");
     } catch (error) {
       console.log(error);

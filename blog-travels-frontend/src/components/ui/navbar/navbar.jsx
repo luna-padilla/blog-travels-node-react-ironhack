@@ -8,6 +8,7 @@ import {
   FaUserPlus,
   FaBars,
 } from "react-icons/fa";
+
 import { useAuthContext } from "../../../contexts/auth-context";
 
 function Navbar() {
@@ -16,11 +17,19 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg bg-light shadow-sm">
       <div className="container">
         {/* Logo */}
-        <Link className="navbar-brand fw-bold" to="/">
+        {/* <Link className="navbar-brand fw-bold" to="/">
           <FaPlane className="me-1 text-primary" />
           TravelBlog
+        </Link> */}
+        <Link className="navbar-brand fw-bold" to="/">
+            <img
+                src="/images/Diseño sin título.png"
+                alt="TravelBlog Logo"
+                className="me-1" // Puedes ajustar el margen aquí
+                style={{ width: '30px', height: '30px' }} // Ajusta el tamaño aquí
+            />
+            TravelBlog
         </Link>
-
         {/* Botón para móviles */}
         <button
           className="navbar-toggler"

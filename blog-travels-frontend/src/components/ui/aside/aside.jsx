@@ -1,12 +1,13 @@
 import { Card, ListGroup, Button, Badge, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/auth-context";
+// import { useAuthContext } from "../../../contexts/auth-context";
 import SearchBar from "../search-bar/search-bar";
 import AdCarousel from "../ads/ad-carousel";
 import TravelAds from "../ads/travel-ads";
 
 function Sidebar() {
-  const { user } = useAuthContext();const tags = [
+//   const { user } = useAuthContext();
+  const tags = [
     "Aventura",
     "Playa",
     "Montaña",

@@ -18,15 +18,15 @@
   border-top: 0.4em solid var(--primary-color);
 }
 
+/* 
 .navbar-nav .dropdown .btn {
   border: none;
 }
-
+*/
 .navbar-nav .dropdown .btn a {
   color: var(--middle-grey) !important;
   font-weight: 800;
 }
-
 .navbar-nav .dropdown .dropdown-menu a {
   color: var(--middle-grey) !important;
 }
@@ -34,9 +34,7 @@
 .navbar a {
   color: var(--middle-grey) !important;
   font-weight: 600;
-  font-size: 1.4em;
-  /* text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); */
-}
+} 
 
 .btn-browser {
   background: var(--primary-color);
