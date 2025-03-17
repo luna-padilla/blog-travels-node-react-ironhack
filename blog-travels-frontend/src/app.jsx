@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { LoginPage, RegisterPage, HomePage, TravelsDetailPage, SearchPage } from "./pages";
 import Navbar from "./components/ui/navbar/navbar";
 import ProfilePage from "./pages/profile";
@@ -9,9 +9,15 @@ import MyTravels from "./pages/my-travels";
 import TravelForm from "./components/travel/travel-form/travel-form";
 
 function App() {
+  const location = useLocation();
+  
+  // Ocultar Navbar y Footer en Login y Register
+  const hideNavAndFooter = ["/login", "/register"].includes(location.pathname);
+
   return (
     <>
-      <Navbar />
+      {!hideNavAndFooter && <Navbar />}
+      
       <Routes>
         <Route
           path="/profile"
@@ -21,18 +27,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route
-          path="/admin"
-          element={
-            <PrivateRoute role="admin">
-              <AdminPanel />
-            </PrivateRoute>
-          }
-        /> */}
-
-        {/* <Route path="/403" element={<Forbidden/>}/>
-        <Route path="*" element={<NotFound/>}/> */}
-
+        
         <Route path="/my-travels" element={<MyTravels />} />
         <Route path="/travels/new" element={<TravelForm />} />
         <Route path="/travels/edit/:id" element={<TravelForm />} />
@@ -43,7 +38,8 @@ function App() {
         <Route path="/travels/:id" element={<TravelsDetailPage />} />
         <Route path="/search" element={<SearchPage />} />
       </Routes>
-      <Footer />
+      
+      {!hideNavAndFooter && <Footer />}
     </>
   );
 }
