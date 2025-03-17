@@ -13,7 +13,7 @@ function SearchBar() {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container mb-5 mt-4 browser">
       <form
         className="input-group"
         onSubmit={handleSearch}

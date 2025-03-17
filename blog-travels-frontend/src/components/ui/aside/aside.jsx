@@ -6,31 +6,30 @@ import AdCarousel from "../ads/ad-carousel";
 import TravelAds from "../ads/travel-ads";
 
 function Sidebar() {
-//   const { user } = useAuthContext();
+  //   const { user } = useAuthContext();
   const tags = [
-    "Aventura",
-    "Playa",
-    "Montaña",
-    "Ciudades",
-    "Cultura",
-    "Gastronomía",
-    "Naturaleza",
-    "Ecoturismo",
-    "Turismo Rural",
-    "Senderismo",
+    "Adventure",
+    "Beach",
+    "Mountain",
+    "Cities",
+    "Culture",
+    "Gastronomy",
+    "Nature",
+    "Ecotourism",
+    "Rural Tourism",
+    "Hiking",
     "Camping",
-    "Cruceros",
+    "Cruises",
     "Safari",
-    "Historia",
-    "Arquitectura",
-    "Mochilero",
-    "Fotografía",
-    "Lujo",
-    "Islas",
-    "Desierto",
-    "Esquí"
-  ];
-  
+    "History",
+    "Architecture",
+    "Backpacking",
+    "Photography",
+    "Luxury",
+    "Islands",
+    "Desert",
+    "Skiing",
+];
 
   return (
     <div className="col-md-3">
@@ -62,13 +61,13 @@ function Sidebar() {
         <Card.Header>Categories</Card.Header>
         <ListGroup variant="flush">
           <ListGroup.Item as={Link} to="/category/playa">
-            Playa
+            Beach
           </ListGroup.Item>
           <ListGroup.Item as={Link} to="/category/montaña">
-            Montaña
+            Mountain
           </ListGroup.Item>
           <ListGroup.Item as={Link} to="/category/ciudades">
-            Ciudades
+            Cities
           </ListGroup.Item>
         </ListGroup>
       </Card>
@@ -78,13 +77,13 @@ function Sidebar() {
         <Card.Header>Most popular</Card.Header>
         <ListGroup variant="flush">
           <ListGroup.Item as={Link} to="/travels/1">
-            Aventura en los Alpes
+            Alpine Adventure
           </ListGroup.Item>
           <ListGroup.Item as={Link} to="/travels/2">
-            Descubriendo Tokio
+            Discovering Tokyo
           </ListGroup.Item>
           <ListGroup.Item as={Link} to="/travels/3">
-            Safari en Kenia
+            Kenyan Safari
           </ListGroup.Item>
         </ListGroup>
       </Card>

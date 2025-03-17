@@ -38,6 +38,10 @@
   font-weight: 600;
 }
 
+.browser {
+  padding: 0%;
+}
+
 .btn-browser {
   background: var(--primary-color);
   color: rgb(255, 255, 255) !important;
@@ -138,7 +142,7 @@ body {
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link:hover {
   color: white;
-  background: rgb(180, 174, 174);
+  background: rgb(206, 200, 200);
 }
 
 .custom-tabs .nav-link.active {

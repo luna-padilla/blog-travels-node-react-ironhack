@@ -57,20 +57,19 @@ function Navbar() {
 
             <li className="nav-item">
               <Link className="nav-link" to="/destinations">
-                <FaMapMarkedAlt className="me-1" /> Destinos Populares
+                <FaMapMarkedAlt className="me-1" /> Popular Destinations
               </Link>
             </li>
 
             <li className="nav-item">
               <Link className="nav-link" to="/travel-tips">
-                <FaLightbulb className="me-1" /> Consejos de Viaje
+                <FaLightbulb className="me-1" /> Travel Tips
               </Link>
             </li>
 
             <li className="nav-item">
               <Link className="nav-link" to="/gear">
-                <FaSuitcaseRolling className="me-1" /> Recomendaciones de
-                Equipaje
+                <FaSuitcaseRolling className="me-1" /> Luggage Recommendations
               </Link>
             </li>
 
@@ -125,10 +124,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link
-                    className="nav-link btn text-white px-3"
-                    to="/register"
-                  >
+                  <Link className="nav-link btn text-white px-3" to="/register">
                     <FaUserPlus className="me-1" /> Sign up
                   </Link>
                 </li>

@@ -25,7 +25,7 @@ function HomePage() {
       </div>
 
       {/* Contenedor con dos columnas */}
-      <div className="row mt-5 p-5">
+      <div className="row mt-5 p-5 justify-content-center">
         {/* Contenido principal */}
         <div className="col-md-8">
           <ul className="nav nav-tabs">
@@ -59,7 +59,7 @@ function HomePage() {
             </li>
           </ul>
 
-          <div className="tab-content mt-3 p-3  custom-tab-content">
+          <div className="tab-content mt-3 custom-tab-content">
             {activeTab === "featured" && <TravelList category="featured" />}
             {activeTab === "newest" && <TravelList category="newest" />}
             {activeTab === "bloggers" && <TravelList category="bloggers" />}

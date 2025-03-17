@@ -114,25 +114,25 @@ function TravelDetail() {
                 rows="3"
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Escribe un comentario..."
+                placeholder="Write a comment..."
               ></textarea>
               <div className="d-flex justify-content-end mt-2">
                 <button
                   className="btn btn-primary btn-sm"
                   onClick={handleAddComment}
                 >
-                  Comentar 💬
+                  Comment 💬
                 </button>
               </div>
             </div>
           ) : (
             <div className="text-center mt-3">
-              <p className="text-muted">Debes iniciar sesión para comentar.</p>
+              <p className="text-muted">You must log in to comment.</p>
               <button
-                className="btn btn-outline-primary"
+                className="btn  btn-primary btn-sm"
                 onClick={() => navigate("/login")}
               >
-                Iniciar sesión
+                Log in
               </button>
             </div>
           )}
