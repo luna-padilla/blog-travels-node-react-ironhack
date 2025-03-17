@@ -26,7 +26,7 @@ export default function MyTravels() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4 my-travels">
       <h2>My Travels</h2>
       <Link to="/travels/new" className="btn btn-primary mb-3">
         + Create Travel

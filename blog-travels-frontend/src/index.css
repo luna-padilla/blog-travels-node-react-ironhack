@@ -249,3 +249,7 @@ body {
 .pagination .page-item .page-link {
   color: var(--middle-grey) !important;
 }
+
+.my-travels{
+  min-height: 300px;
+}
