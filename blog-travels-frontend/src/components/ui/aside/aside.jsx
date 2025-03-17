@@ -58,7 +58,7 @@ function Sidebar() {
 
       {/* Categorías */}
       <Card className="mb-4">
-        <Card.Header>Categorías</Card.Header>
+        <Card.Header>Categories</Card.Header>
         <ListGroup variant="flush">
           <ListGroup.Item as={Link} to="/category/playa">
             Playa
@@ -74,7 +74,7 @@ function Sidebar() {
 
       {/* Viajes recientes */}
       <Card className="mb-4">
-        <Card.Header>Viajes Recientes</Card.Header>
+        <Card.Header>Most popular</Card.Header>
         <ListGroup variant="flush">
           <ListGroup.Item as={Link} to="/travels/1">
             Aventura en los Alpes
@@ -90,7 +90,7 @@ function Sidebar() {
 
       {/* Redes sociales */}
       <Card className="mb-4">
-        <Card.Header>Síguenos</Card.Header>
+        <Card.Header>Follow us</Card.Header>
         <Card.Body className="text-center">
           <Button variant="outline-primary" className="me-2">
             Facebook
@@ -116,7 +116,7 @@ function Sidebar() {
         </Card.Body>
       </Card>
 
-      <div className="">
+      <div className="mt-5">
         <AdCarousel />
       </div>
     </div>
